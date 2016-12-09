@@ -3,7 +3,7 @@
 //
 /* ====== Global Vars ============== */
 /* ================================= */
-var inventory = [ ];
+var inventory = [];
 loadInventory();
 //
 /* ================================= */
@@ -27,11 +27,15 @@ function loadInventory (callback) { // Load the inventory and send a callback fu
 /* ================================= */
 function populatePage () {
   for(var i = 0; i < loadInventory.cars.length; i++){
-    inventory += `<div class="card col-md-4">
+    inventory += `<div class="col-md-4">
+                  <div class="card">
                   <div class="card-block">
-                    <h4 class="card-title">${'loadInventory.cars[i].make'}</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h4 class="card-title">${loadInventory.cars[i].make}</h4>
+                    <h5>${loadInventory.cars[i].year}</h5>
+                    <h5>${loadInventory.cars[i].model}</h5>
+                    <h3>${loadInventory.cars[i].price}</h3>
+                    <p class="card-text">${loadInventory.cars[i].description}</a>
+                  </div>
                   </div>
                   </div>  `
 
