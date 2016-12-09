@@ -1,0 +1,60 @@
+{
+  "cars": [
+    {
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": "2006",
+      "price": "8999",
+      "description": "This is an immaculate 2006 Nissan Rogue with only 25000 miles on it. Leather seats, power everything."
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang",
+      "year": "2005",
+      "price": "12,999",
+      "description": " "
+    },
+    {
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": "2009",
+      "price": "9999",
+      "description": " "
+    },
+    {
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": "2011",
+      "price": "18999",
+      "description": " "
+    },
+    {
+      "make": "Ford",
+      "model": "Ranger",
+      "year": "1995",
+      "price": "4999",
+      "description": " "
+    },
+    {
+      "make": "Ford",
+      "model": "Crown Victoria",
+      "year": "2005",
+      "price": "12999",
+      "description": " "
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang GT",
+      "year": "2014",
+      "price": "28999",
+      "description": " "
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang GT",
+      "year": "2015",
+      "price": "31228",
+      "description": " "
+    }
+  ]
+}
