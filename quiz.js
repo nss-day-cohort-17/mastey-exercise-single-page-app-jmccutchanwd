@@ -15,6 +15,8 @@ document.querySelector("body").addEventListener("click", function(e) {
 /* ================================= */
 var inventory = [];
 loadInventory();
+var focusTgt = "";
+var counter = false;
 //
 /* ================================= */
 /* ====== Load JSON ================ */
@@ -58,29 +60,47 @@ function populatePage () {
 /* ================================= */
 /* ====== Event Listeners ========== */
 /* ================================= */
-
-//   // Now that the DOM is loaded, establish all the event listeners needed
 function activateEvents(){
-  document.getElementById("modText").addEventListener("click", testMessage);
-  document.getElementById("submitButton").addEventListener("click", testMessage);
+  document.getElementById("modText").addEventListener("click", changeDescription);
+  document.getElementById("submitButton").addEventListener("click", focusGone);
   document.getElementById("cardsGoHere").addEventListener("click", focusDescription);
   console.log("Listeners turned on."); //**** Message
-}
+} // End function
 //
-function testMessage(){
-  console.log("Action taken.")
-}
-function focusDescription(e){
-  if (e.target.localName === "p"){
-    console.log("Description.");
-  }
-}
-
-//You should add a function that resets the border thickness and background color for each car element back to the original values.
-
+/* ================================= */
+/* Focus When Description Clicked == */
+/* ================================= */
 /*You should add a function that changes the thickness of the border of a car element, and changes its background color. The function must accept two arguments:
     1. A car DOM element that was clicked on.
     1. A color name of your choice (see behavior requirement 5 above). */
+function focusDescription(e){
+  if ((e.target.localName === "p")&&(counter === false)){
+    focusTgt = e.target;
+    focusTgt.className = "focusStyle";
+    counter = true;
+    document.getElementById("modText").focus(); // Adds focus and cursor to text input
+    console.log("Focus applied."); //**** Message
+  }
+} // End function
+//
+/* ================================= */
+/* ====== Change Description ======= */
+/* ================================= */
+function changeDescription(e){
+  loadInventory.cars[i].description
+  console.log("Description changed."); //**** Message
+}
+//
+/* ================================= */
+/* ====== Reset Focus ============== */
+/* ================================= */
+//You should add a function that resets the border thickness and background color for each car element back to the original values.
+function focusGone(e){
+  focusTgt.className = "card-text";
+  console.log("Removed focus."); //**** Message
+  counter = false;
+} // End function
+
 
 
 
