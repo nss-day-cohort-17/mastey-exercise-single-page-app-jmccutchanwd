@@ -80,6 +80,9 @@ function focusDescription(e){
     counter = true;
     document.getElementById("modText").focus(); // Adds focus and cursor to text input
     console.log("Focus applied."); //**** Message
+    console.log(document.getElementById("modText").value); // = e.tgt.innerText;
+    console.log(focusTgt.innerText);
+    document.getElementById("modText").value = focusTgt.innerText;
   }
 } // End function
 //
@@ -97,6 +100,7 @@ function changeDescription(e){
 //You should add a function that resets the border thickness and background color for each car element back to the original values.
 function focusGone(e){
   focusTgt.className = "card-text";
+  document.getElementById("modText").value = "";
   console.log("Removed focus."); //**** Message
   counter = false;
 } // End function
