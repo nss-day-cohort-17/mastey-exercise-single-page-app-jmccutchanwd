@@ -6,7 +6,7 @@
             "year": "2006",
             "price": "$8,999",
             "description": "This is an immaculate 2006 Nissan Rogue with only 25000 miles on it. Leather seats, power everything.",
-            "id": "1"
+            "img": "src='images/06-rogue.png'"
         },
         {
             "make": "Ford",
@@ -14,7 +14,7 @@
             "year": "2005",
             "price": "$12,999",
             "description": " ",
-            "id": "2"
+            "img": "src='images/05-mustang.png'"
         },
         {
             "make": "Toyota",
@@ -22,7 +22,7 @@
             "year": "2009",
             "price": "$9,999",
             "description": " ",
-            "id": "3"
+            "img": "src='images/09-corolla.png'"
         },
         {
             "make": "Nissan",
@@ -30,7 +30,7 @@
             "year": "2011",
             "price": "$18,999",
             "description": " ",
-            "id": "4"
+            "img": "src='images/11-rogue.png'"
         },
         {
             "make": "Ford",
@@ -38,7 +38,7 @@
             "year": "1995",
             "price": "$4,999",
             "description": " ",
-            "id": "5"
+            "img": "src='images/95-ranger.png'"
         },
         {
             "make": "Ford",
@@ -46,7 +46,7 @@
             "year": "2005",
             "price": "$12,999",
             "description": " ",
-            "id": "6"
+            "img": "src='images/05-crown-vic.png'"
         },
         {
             "make": "Ford",
@@ -54,7 +54,7 @@
             "year": "2014",
             "price": "$28,999",
             "description": " ",
-            "id": "7"
+            "img": "src='images/14-mustang-gt.png'"
         },
         {
             "make": "Ford",
@@ -62,7 +62,7 @@
             "year": "2015",
             "price": "$31,228",
             "description": " ",
-            "id": "8"
+            "img": "src='images/15-mustang-gt.png'"
         }
     ]
 }
