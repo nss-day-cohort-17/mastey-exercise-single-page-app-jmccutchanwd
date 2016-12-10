@@ -1,6 +1,13 @@
 /* ====== By John McCutchan ======== */
 /* ================================= */
 //
+/* +++++++++ DEV TOOL ++++++++++++++ */
+document.querySelector("body").addEventListener("click", function(e) {
+  console.log(e);
+});
+/* +++ REMOVE BEFORE PRODUCTION ++++ */
+//
+/* ================================= */
 /* ====== Global Vars ============== */
 /* ================================= */
 var inventory = [];
@@ -9,16 +16,16 @@ loadInventory();
 /* ================================= */
 /* ====== Load JSON ================ */
 /* ================================= */
-function loadInventory (callback) { // Load the inventory and send a callback function to be
-  var inventoryLoader = new XMLHttpRequest(); // invoked after the process is complete
-  inventoryLoader.addEventListener("load", function (e) {
-  loadInventory = JSON.parse(e.target.responseText);
-  console.log("load complete");//******************************************
-  console.log("JSON", loadInventory);//************************************
-  populatePage(e);
-  console.log(loadInventory.cars.length);
-  });
-  inventoryLoader.open("GET", "https://car-sales-jm.firebaseio.com/.json");
+function loadInventory (callback) { // Load the inventory
+  var inventoryLoader = new XMLHttpRequest();
+  inventoryLoader.addEventListener("load", function (e) { // Callback =
+  loadInventory = JSON.parse(e.target.responseText);//................=
+  console.log("load complete");//.....................................=**** Message
+  console.log("JSON", loadInventory);//...............................=**** Shows the JSON
+  populatePage(e);//..................................................=
+  console.log(loadInventory.cars.length);//...........................=
+  });//...........This is not called until after the section below is =
+  inventoryLoader.open("GET", "https://car-sales-jm.firebaseio.com/.json"); // JSON Called from Firebase :)
   inventoryLoader.send();
 }
 //
@@ -26,7 +33,7 @@ function loadInventory (callback) { // Load the inventory and send a callback fu
 /* ====== Create Cards ============= */
 /* ================================= */
 function populatePage () {
-  for(var i = 0; i < loadInventory.cars.length; i++){
+  for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to creat inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
                   <div class="card">
                   <img class="card-img-top img-xs-center" ${loadInventory.cars[i].img} alt="Card image cap">
@@ -40,8 +47,8 @@ function populatePage () {
                   </div>
                   </div>  `
   }
-  console.log("Inventory", inventory);//***********************************
-  document.getElementById("cardsGoHere").innerHTML = inventory;
+  // console.log("Inventory", inventory);//********************************** Shows the inner HTML string
+  document.getElementById("cardsGoHere").innerHTML = inventory; // Loads inventory into DOM
   // console.log(inventory);
 }
 
@@ -55,28 +62,3 @@ function populatePage () {
 //   // Now that the DOM is loaded, establish all the event listeners needed
 //   activateEvents();
 // }
-
-/*
-
-src="images/05-crown-vic.png'
-src='images/05-mustang.png'
-src='images/06-rogue.png'
-src='images/09-corolla.png'
-src='images/11-rogue.png'
-src='images/14-mustang-gt.png'
-src='images/15-mustang-gt.png'
-src='images/19-ranger.png'
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
