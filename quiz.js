@@ -27,8 +27,9 @@ function loadInventory (callback) { // Load the inventory and send a callback fu
 /* ================================= */
 function populatePage () {
   for(var i = 0; i < loadInventory.cars.length; i++){
-    inventory += `<div class="col-md-4">
+    inventory += `<div class="col-lg-4 col-md-6">
                   <div class="card">
+                  <img class="card-img-top img-xs-center" src="images/red-mustang.png" alt="Card image cap">
                   <div class="card-block">
                     <h4 class="card-title">${loadInventory.cars[i].make}</h4>
                     <h5>${loadInventory.cars[i].year}</h5>
