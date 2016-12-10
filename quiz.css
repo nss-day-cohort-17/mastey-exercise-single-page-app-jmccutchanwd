@@ -18,3 +18,11 @@ body{
   margin: 0 auto;
 }
 .btn.btn-outline-success{}
+.focusStyle{
+  background-color: red;
+}
+.form-control:focus{
+  border:3px solid #5cb85c;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
