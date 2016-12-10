@@ -13,7 +13,7 @@
             "model": "Mustang",
             "year": "2005",
             "price": "$12,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/05-mustang.png'"
         },
         {
@@ -21,7 +21,7 @@
             "model": "Corolla",
             "year": "2009",
             "price": "$9,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/09-corolla.png'"
         },
         {
@@ -29,7 +29,7 @@
             "model": "Rogue",
             "year": "2011",
             "price": "$18,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/11-rogue.png'"
         },
         {
@@ -37,7 +37,7 @@
             "model": "Ranger",
             "year": "1995",
             "price": "$4,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/95-ranger.png'"
         },
         {
@@ -45,7 +45,7 @@
             "model": "Crown Victoria",
             "year": "2005",
             "price": "$12,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/05-crown-vic.png'"
         },
         {
@@ -53,7 +53,7 @@
             "model": "Mustang GT",
             "year": "2014",
             "price": "$28,999",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/14-mustang-gt.png'"
         },
         {
@@ -61,7 +61,7 @@
             "model": "Mustang GT",
             "year": "2015",
             "price": "$31,228",
-            "description": " ",
+            "description": "Description.",
             "img": "src='images/15-mustang-gt.png'"
         }
     ]
