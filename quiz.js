@@ -61,16 +61,26 @@ function populatePage () {
 
 //   // Now that the DOM is loaded, establish all the event listeners needed
 function activateEvents(){
-  document.getElementById("modText").addEventListener("click", testMessage)
-  document.getElementById("submitButton").addEventListener("click", testMessage)
+  document.getElementById("modText").addEventListener("click", testMessage);
+  document.getElementById("submitButton").addEventListener("click", testMessage);
+  document.getElementById("cardsGoHere").addEventListener("click", focusDescription);
   console.log("Listeners turned on."); //**** Message
 }
 //
 function testMessage(){
   console.log("Action taken.")
 }
+function focusDescription(e){
+  if (e.target.localName === "p"){
+    console.log("Description.");
+  }
+}
 
+//You should add a function that resets the border thickness and background color for each car element back to the original values.
 
+/*You should add a function that changes the thickness of the border of a car element, and changes its background color. The function must accept two arguments:
+    1. A car DOM element that was clicked on.
+    1. A color name of your choice (see behavior requirement 5 above). */
 
 
 
