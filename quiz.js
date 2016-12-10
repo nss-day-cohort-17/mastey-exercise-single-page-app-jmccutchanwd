@@ -18,7 +18,7 @@ function loadInventory (callback) { // Load the inventory and send a callback fu
   populatePage(e);
   console.log(loadInventory.cars.length);
   });
-  inventoryLoader.open("GET", "inventory.json");
+  inventoryLoader.open("GET", "https://car-sales-jm.firebaseio.com/.json");
   inventoryLoader.send();
 }
 //
