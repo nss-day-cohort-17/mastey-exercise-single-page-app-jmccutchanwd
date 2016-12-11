@@ -41,7 +41,7 @@ function populatePage () {
   for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to creat inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
                     <div class="card">
-                      <img class="card-img-top img-xs-center" ${loadInventory.cars[i].img} alt="Card image cap">
+                      <img class="card-img-top img-fluid img-xs-center" ${loadInventory.cars[i].img} alt="Card image cap">
                       <div class="card-block">
                         <h4 class="card-title">${loadInventory.cars[i].make}</h4>
                         <h5 class="year">${loadInventory.cars[i].year}</h5>
@@ -61,9 +61,9 @@ function populatePage () {
 /* ====== Event Listeners ========== */
 /* ================================= */
 function activateEvents(){
-  document.getElementById("modText").addEventListener("click", changeDescription);
-  document.getElementById("submitButton").addEventListener("click", changeDescription);
-  document.getElementById("cardsGoHere").addEventListener("click", focusDescription);
+  document.getElementById("modText").addEventListener("click", focusDescription); // input listener
+  document.getElementById("submitButton").addEventListener("click", changeDescription); // submit button listener
+  document.getElementById("cardsGoHere").addEventListener("click", focusDescription); // <p> tag click listener
   console.log("Listeners turned on."); //**** Message
 } // End function
 //
@@ -74,66 +74,34 @@ function activateEvents(){
     1. A car DOM element that was clicked on.
     1. A color name of your choice (see behavior requirement 5 above). */
 function focusDescription(e){
-  if ((e.target.localName === "p")&&(counter === false)){
-    focusTgt = e.target;
-    focusTgt.className = "focusStyle";
-    counter = true;
+  if ((e.target.localName === "p")&&(counter === false)){ // checks that <p> was clicked, and its the only one
+    focusTgt = e.target; // assigns the value of what is clicked to a global var
+    focusTgt.className = "focusStyle"; // assigns the <p> in focus a new style that gives it a border and background
+    counter = true; // flips the counter var to ensure only one <p> is selected
     document.getElementById("modText").focus(); // Adds focus and cursor to text input
     console.log("Focus applied."); //**** Message
+    document.getElementById("modText").value = focusTgt.innerText; // loads description to input field
   }
-  document.getElementById("modText").value = focusTgt.innerText; // loads description to input field
 } // End function
 //
 /* ================================= */
 /* ====== Change Description ======= */
 /* ================================= */
 function changeDescription(e){
-  var transfer = document.getElementById("modText").value;
-  focusTgt.innerText = transfer;
+  var transfer = document.getElementById("modText").value; // assigns input value to a local var
+  focusTgt.innerText = transfer; // assigns the input value to the <p> inner HTML
   console.log("Description changed."); //**** Message
-  focusGone();
+  focusGone(); // calls Reset Focus
 }
 //
 /* ================================= */
 /* ====== Reset Focus ============== */
 /* ================================= */
 function focusGone(e){
-  focusTgt.className = "card-text";
-  document.getElementById("modText").value = "";
+  focusTgt.className = "card-text"; // resets the <p> text class back to normal
+  document.getElementById("modText").value = ""; // clears input field
   console.log("Removed focus."); //**** Message
-  counter = false;
-  document.getElementById("modText").blur();
+  counter = false; // resets global counter to false
+  document.getElementById("modText").blur(); // takes focus off input field
 } // End function
-/*
-
-// get the second's player name.
-    var player1name = document.getElementById("player1name").value;
-
-    // set the first's player name in the corresponding th.
-    document.getElementById("player1").innerHTML = player1name;
-
-
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body>
-    <input id="source" type="text"/>
-    <div id="target"></div>
-    <script type="text/javascript" src="script.js"></script>
-  </body>
-</html>
-
-function copyData(sourceId, targetId) {
-    var source = document.getElementById(sourceId);
-    document.getElementById(targetId).innerHTML = source.value;
-}
-document.getElementById('source').oninput(function () {
-    copyData('source', 'target');
-}
-
-
-*/
-
-
-
 // END
