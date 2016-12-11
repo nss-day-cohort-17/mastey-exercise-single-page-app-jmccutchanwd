@@ -4,12 +4,6 @@
 //
 console.log("Begin."); //**** Message
 //
-/* +++++++++ DEV TOOL ++++++++++++++ */
-document.querySelector("body").addEventListener("click", function(e) {
-  console.log(e);
-});
-/* +++ REMOVE BEFORE PRODUCTION ++++ */
-//
 /* ================================= */
 /* ====== Global Vars ============== */
 /* ================================= */
@@ -70,9 +64,6 @@ function activateEvents(){
 /* ================================= */
 /* Focus When Description Clicked == */
 /* ================================= */
-/*You should add a function that changes the thickness of the border of a car element, and changes its background color. The function must accept two arguments:
-    1. A car DOM element that was clicked on.
-    1. A color name of your choice (see behavior requirement 5 above). */
 function focusDescription(e){
   if ((e.target.localName === "p")&&(counter === false)){ // checks that <p> was clicked, and its the only one
     focusTgt = e.target; // assigns the value of what is clicked to a global var
