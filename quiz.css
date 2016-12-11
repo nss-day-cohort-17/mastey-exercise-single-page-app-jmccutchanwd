@@ -1,31 +1,39 @@
 /*--------- John McCutchan ------------*/
+/* Built with Bootstrap, mobile first */
+/*============ Structure ===============*/
+.card-block{ /* The area in the card where the words are */
+  min-height: 280px;
+}
+#cardsGoHere{ /* The <div> JavaScript writes to */
+  margin-top:100px;
+}
+.card-img-top{ /* The car image  */
+  display: block;;
+  margin: 0 auto;
+}
+.focusStyle{ /* The style for the <p> when clicked */
+  padding:5px;
+}
+/*============ Skin ===============*/
 body{
   background-color: rgba(127, 140, 141,1.0);
 }
-.card{
+.card{ /* The container for the car listing */
+  background-color: rgba(55, 58, 60,1.0);
   border: 5px solid rgba(0, 0, 0,1.0);
   border-radius: 5px;
   overflow: hidden;
 }
-.card-block{
-  min-height: 280px;
+.card-block{ /* The area in the card where the words are */
   background-color: rgba(255, 255, 255,1.0);
 }
-#cardsGoHere{
-  margin-top:100px;
-}
-.card-img-top{
-  display: block;;
-  margin: 0 auto;
-}
-.btn.btn-outline-success{}
-.focusStyle{
+.focusStyle{ /* The style for the <p> when clicked */
   background-color: rgba(241, 196, 15,0.5);
-  padding:5px;
   border:3px outset rgba(0, 0, 0,0.5);
 }
-.form-control:focus{
+.form-control:focus{ /* The style for the input field when focused */
   border:3px solid #5cb85c;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+/* ---- END ----- */
