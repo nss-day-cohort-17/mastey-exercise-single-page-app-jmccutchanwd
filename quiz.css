@@ -11,7 +11,7 @@
   display: block;;
   margin: 0 auto;
 }
-.focusStyle{ /* The style for the <p> when clicked */
+#focusStyle{ /* The style for the <p> when clicked */
   padding:5px;
 }
 /*============ Skin ===============*/
@@ -27,7 +27,7 @@ body{
 .card-block{ /* The area in the card where the words are */
   background-color: rgba(255, 255, 255,1.0);
 }
-.focusStyle{ /* The style for the <p> when clicked */
+#focusStyle{ /* The style for the <p> when clicked */
   background-color: rgba(241, 196, 15,0.5);
   border:3px outset rgba(0, 0, 0,0.5);
 }
