@@ -2,15 +2,14 @@
 /* ====== By John McCutchan ======== */
 /* ================================= */
 //
-console.log("Begin."); //**** Message
+console.log("1.Begin."); //**** Message ******************************************************1
+loadInventory();
 //
 /* ================================= */
 /* ====== Global Vars ============== */
 /* ================================= */
-var inventory = [];
-loadInventory();
-var focusTgt = "";
-var counter = false;
+var inventory = []; // container for inner html
+var tgtFocus; // container for .card data
 //
 /* ================================= */
 /* ====== Load JSON ================ */
@@ -19,14 +18,20 @@ function loadInventory (callback) { // Load the inventory
   var inventoryLoader = new XMLHttpRequest();
   inventoryLoader.addEventListener("load", function (e) { // Callback .......=
   loadInventory = JSON.parse(e.target.responseText);//.......................=
-  console.log("Load complete.");//...........................................=**** Message
-  console.log("JSON: ", loadInventory);//....................................=**** Shows the JSON
-  populatePage(e);//.........................................................=
-  console.log("Number of cars in inventory: ",loadInventory.cars.length);//..=**** Number of cars in inventory
+  console.log("2.Load complete.");//...........................................=**** Message ****************************2
+  console.log("3.JSON: ", loadInventory);//....................................=**** Shows the JSON *********************3
+  populatePage(e);//.........................................................=**** Calls the populatePage function
+  console.log("4.Number of cars in inventory: ",loadInventory.cars.length);//..=**** Number of cars in inventory ********4
   });//..................This is not called until after the section below is =
   inventoryLoader.open("GET", "https://car-sales-jm.firebaseio.com/.json"); // JSON Called from Firebase :)
   inventoryLoader.send();
-} // End function
+}
+//
+/* +++++++++ DEV TOOL ++++++++++++++ */
+// document.querySelector("body").addEventListener("click", function(e) {
+//   console.log(e);
+// });
+/* +++ REMOVE BEFORE PRODUCTION ++++ */
 //
 /* ================================= */
 /* ====== Create Cards ============= */
@@ -35,64 +40,64 @@ function populatePage () {
   for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to creat inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
                     <div class="card">
-                      <img class="card-img-top img-fluid img-xs-center" ${loadInventory.cars[i].img} alt="Card image cap">
+                      <img class="card-img-top img-fluid img-xs-center vis" ${loadInventory.cars[i].img} alt="Card image cap">
                       <div class="card-block">
-                        <h4 class="card-title">${loadInventory.cars[i].make}</h4>
-                        <h5 class="year">${loadInventory.cars[i].year}</h5>
-                        <h5 class="model">${loadInventory.cars[i].model}</h5>
-                        <h3 class="price">${loadInventory.cars[i].price}</h3>
-                        <p class="card-text">${loadInventory.cars[i].description}</a>
+                        <h4 class="vis card-title">${loadInventory.cars[i].make}</h4>
+                        <h5 class="vis year">${loadInventory.cars[i].year}</h5>
+                        <h5 class="vis model">${loadInventory.cars[i].model}</h5>
+                        <h3 class="vis price">${loadInventory.cars[i].price}</h3>
+                        <p class="vis card-text">${loadInventory.cars[i].description}</a>
                       </div>
                     </div>
                   </div>  `
-  } // End loop
-  // console.log("Inventory", inventory);//**** Shows the inner HTML string
+  }
   document.getElementById("cardsGoHere").innerHTML = inventory; // Loads inventory into DOM
-  activateEvents();
-} // End function
+  activateEvents(); // calls event listeners function
+}
 //
 /* ================================= */
 /* ====== Event Listeners ========== */
 /* ================================= */
-function activateEvents(){
-  document.getElementById("modText").addEventListener("click", focusDescription); // input listener
-  document.getElementById("submitButton").addEventListener("click", changeDescription); // submit button listener
-  document.getElementById("cardsGoHere").addEventListener("click", focusDescription); // <p> tag click listener
-  console.log("Listeners turned on."); //**** Message
-} // End function
-//
-/* ================================= */
-/* Focus When Description Clicked == */
-/* ================================= */
-function focusDescription(e){
-  if ((e.target.localName === "p")&&(counter === false)){ // checks that <p> was clicked, and its the only one
-    focusTgt = e.target; // assigns the value of what is clicked to a global var
-    focusTgt.className = "focusStyle"; // assigns the <p> in focus a new style that gives it a border and background
-    counter = true; // flips the counter var to ensure only one <p> is selected
-    document.getElementById("modText").focus(); // Adds focus and cursor to text input
-    console.log("Focus applied."); //**** Message
-    document.getElementById("modText").value = focusTgt.innerText; // loads description to input field
-  }
-} // End function
-//
-/* ================================= */
-/* ====== Change Description ======= */
-/* ================================= */
-function changeDescription(e){
-  var transfer = document.getElementById("modText").value; // assigns input value to a local var
-  focusTgt.innerText = transfer; // assigns the input value to the <p> inner HTML
-  console.log("Description changed."); //**** Message
-  focusGone(); // calls Reset Focus
+function activateEvents(e){
+  document.getElementById("cardsGoHere").addEventListener("click", focusCard);  // event listener to listen in inner HTML
+  document.getElementById("submitButton").addEventListener("click", buttonSubmit);
+  document.getElementById('modText').addEventListener("keyup", typeDescription);
+  console.log("5.Listeners turned on."); //**** Message **********************************************5
 }
 //
 /* ================================= */
-/* ====== Reset Focus ============== */
+/* Focus When Crad Clicked ========= */
 /* ================================= */
-function focusGone(e){
-  focusTgt.className = "card-text"; // resets the <p> text class back to normal
-  document.getElementById("modText").value = ""; // clears input field
-  console.log("Removed focus."); //**** Message
-  counter = false; // resets global counter to false
-  document.getElementById("modText").blur(); // takes focus off input field
-} // End function
+function focusCard(e){
+  var el = document.querySelector("div.card"); // focuses on DOM near div.card
+  tgtFocus = el.closest("div"); // looks for div closest to .vis in <img> (.card)
+  if (tgtFocus.id === ""){ // id attribute of .card
+    tgtFocus.id = "focusStyle"; // applies special styling focus to .card
+    document.getElementById('modText').focus(); // puts focus on text input
+    console.log("6.Card Clicked: ", tgtFocus, "ID: ",tgtFocus.id); //**** Message ****************************************6
+    typeDescription(); // calls input text function
+  }else{ // if card already has Id of #focusStle, it gets removed
+    tgtFocus.id = ""; // clears focus if card is clicked again
+    document.getElementById('modText').blur(); // blurs input field
+    document.getElementById('modText').value = ""; // clears input field
+  }
+}
+//
+/* ================================= */
+/* Type Description ================ */
+/* ================================= */
+function typeDescription(e){
+  document.getElementById("modText").value = document.querySelector("p.card-text").innerHTML; // loads text from <p> to input
+  console.log("7.Whats in pFocus", document.getElementById("modText").value); //**** Message *************Trouble Shooting ********7
+}
+//
+/* ================================= */
+/* Submit Button =================== */
+/* ================================= */
+function buttonSubmit(e){
+  tgtFocus.id = ""; // clears focus style from card
+  document.getElementById('modText').blur(); // blurs input field
+  // document.getElementById('modText').value = ""; // clears input field
+}
+//
 // END
