@@ -21,7 +21,7 @@ function loadInventory (callback) { // Load the inventory
   console.log("2.Load complete.");//.........................................=**** Message ******************************2
   console.log("3.JSON: ", loadInventory);//..................................=**** Shows the JSON ***********************3
   populatePage(e);//.........................................................=**** Calls the populatePage function
-  console.log("5.Number of cars in inventory: ",loadInventory.cars.length);//=**** Number of cars in inventory ********5
+  console.log("5.Number of cars in inventory: ",loadInventory.cars.length);//=**** Number of cars in inventory **********5
   });//..................This is not called until after the section below is =
   inventoryLoader.open("GET", "https://car-sales-jm.firebaseio.com/.json"); // JSON Called from Firebase :)
   inventoryLoader.send(); // engage
