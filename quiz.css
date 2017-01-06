@@ -2,13 +2,15 @@
 /* Built with Bootstrap, mobile first */
 /*============ Structure ===============*/
 .card-block{ /* The area in the card where the words are */
-  min-height: 420px;
+  min-height: 450px;
 }
 #cardsGoHere{ /* The <div> JavaScript writes to */
   margin-top:100px;
 }
 .card-img-top{ /* The car image  */
-  display: block;;
+  display: block;
+  height:179px;
+  width:auto;
   margin: 0 auto;
 }
 #focusStyle{ /* The style for the <p> when clicked */
