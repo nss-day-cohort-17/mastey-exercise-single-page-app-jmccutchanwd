@@ -33,7 +33,7 @@ function loadInventory (callback) { // Load the inventory
 function populatePage () { // called by loadInventory()
   for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to create inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
-                    <div class="card">
+                    <div id="card" class="card">
                       <img class="card-img-top img-fluid img-xs-center vis" ${loadInventory.cars[i].img} alt="Card image cap">
                       <div class="card-block">
                         <h4 class="vis card-title">${loadInventory.cars[i].make}</h4>
