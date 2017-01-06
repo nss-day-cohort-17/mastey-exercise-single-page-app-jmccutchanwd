@@ -4,6 +4,16 @@
 //
 console.log("1.Begin."); //**** Message *********************************************************************************1
 loadInventory(); // load the JSON
+/*
+Deploy this to be able to point and click and find the properties of anything in the DOM.
+Results are displayed in the console.
+*/
+console.log("Element Finder Loaded");
+document.querySelector("body").addEventListener("click", function(e) {
+  console.log(e);
+});
+//
+/* ============ END ================ */
 //
 /* ================================= */
 /* Global Vars ===================== */
@@ -33,7 +43,7 @@ function loadInventory (callback) { // Load the inventory
 function populatePage () { // called by loadInventory()
   for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to create inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
-                    <div id="card" class="card">
+                    <div class="card">
                       <div class="card-block">
                         <img class="card-img-top img-fluid img-xs-center vis" ${loadInventory.cars[i].img} alt="Card image cap">
                         <h4 class="vis card-title">${loadInventory.cars[i].make}</h4>
@@ -83,10 +93,13 @@ function focusCard(e){ // called by clicking on card via listener above
 /* Transfer Type to Input ========== */
 /* ================================= */
 function typeDescription(e){ // called by focusCard()
-  if((tgtFocus.id === "focusStyle") && (tgtFocus.className === "vis card-text")){ // makes sure you are on description block
+  if(tgtFocus.parentNode.id === "focusStyle") { // makes sure you are on description block
     document.getElementById("submitButton").addEventListener("click", buttonSubmit); // button listener
     document.getElementById('modText').focus(); // puts focus on text input
     document.getElementById("modText").value = tgtFocus.innerHTML; // transfers description to input field
+    // document.getElementById("modText").value = tgtFocus(p.vis.card-text.innerHTML);
+    console.log("TESTING" );
+    // && (tgtFocus.className === "vis card-text"))
   }
 }
 //
@@ -102,7 +115,7 @@ function fillText(){ // called by keyup listener in input field
 /* ================================= */
 function buttonSubmit(){ // called by button listener in typeDescription()
   tgtFocus.innerHTML = document.getElementById("modText").value; // transfers input field changes to html, last time
-  tgtFocus.id = ""; // clears focus style from card
+  tgtFocus.parentNode.id = ""; // clears focus style from card
   document.getElementById("modText").blur(); // blurs input field
   document.getElementById("modText").value = ""; // clears input field
   document.getElementById("submitButton").blur(); // takes focus off of button
