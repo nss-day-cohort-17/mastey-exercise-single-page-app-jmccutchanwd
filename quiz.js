@@ -34,8 +34,8 @@ function populatePage () { // called by loadInventory()
   for(var i = 0; i < loadInventory.cars.length; i++){ // Loops through the JSON Parse to create inner HTML
     inventory += `<div class="col-lg-4 col-md-6">
                     <div id="card" class="card">
-                      <img class="card-img-top img-fluid img-xs-center vis" ${loadInventory.cars[i].img} alt="Card image cap">
                       <div class="card-block">
+                        <img class="card-img-top img-fluid img-xs-center vis" ${loadInventory.cars[i].img} alt="Card image cap">
                         <h4 class="vis card-title">${loadInventory.cars[i].make}</h4>
                         <h5 class="vis year">${loadInventory.cars[i].year}</h5>
                         <h5 class="vis model">${loadInventory.cars[i].model}</h5>
@@ -68,13 +68,13 @@ function focusCard(e){ // called by clicking on card via listener above
           var oldFocus = document.getElementById('focusStyle');
           oldFocus.id = "";// deselects previous selected
   }
-  if ((tgtFocus.id === "") && (tgtFocus.className === "vis year") ||
-      (tgtFocus.id === "") && (tgtFocus.className === "vis card-title") ||
-      (tgtFocus.id === "") && (tgtFocus.className === "vis model") ||
-      (tgtFocus.id === "") && (tgtFocus.className === "vis price") ||
-      (tgtFocus.id === "") && (tgtFocus.className === "card-img-top img-fluid img-xs-center vis") ||
-      (tgtFocus.id === "") && (tgtFocus.className === "vis card-text")){ // id attribute of .card
-    tgtFocus.id = "focusStyle"; // applies special styling focus to .card
+  if ((tgtFocus.className === "vis year") ||
+      (tgtFocus.className === "vis card-title") ||
+      (tgtFocus.className === "vis model") ||
+      (tgtFocus.className === "vis price") ||
+      (tgtFocus.className === "card-img-top img-fluid img-xs-center vis") ||
+      (tgtFocus.className === "vis card-text")){ // id attribute of .card
+      tgtFocus.parentNode.id = "focusStyle"; // applies special styling focus to .card
     typeDescription(); // calls input text function
   }
 }
