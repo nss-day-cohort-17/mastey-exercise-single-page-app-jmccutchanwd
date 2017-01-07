@@ -85,6 +85,7 @@ function focusCard(e){ // called by clicking on card via listener above
       (tgtFocus.className === "card-img-top img-fluid img-xs-center vis") ||
       (tgtFocus.className === "vis card-text")){ // id attribute of .card
       tgtFocus.parentNode.id = "focusStyle"; // applies special styling focus to .card
+      console.log("TESTING after click", tgtFocus.closest('div').getElementsByTagName('p'));
     typeDescription(); // calls input text function
   }
 }
@@ -96,10 +97,13 @@ function typeDescription(e){ // called by focusCard()
   if(tgtFocus.parentNode.id === "focusStyle") { // makes sure you are on description block
     document.getElementById("submitButton").addEventListener("click", buttonSubmit); // button listener
     document.getElementById('modText').focus(); // puts focus on text input
-    document.getElementById("modText").value = tgtFocus.innerHTML; // transfers description to input field
-    // document.getElementById("modText").value = tgtFocus(p.vis.card-text.innerHTML);
-    console.log("TESTING" );
-    // && (tgtFocus.className === "vis card-text"))
+    document.getElementById("modText").value = tgtFocus.closest('div').getElementsByTagName('p')[0].innerHTML; // transfers description to input field
+    console.log("TESTING", tgtFocus);
+    /*
+    1. Also, on click of the car element, clear the value of the text input in the navbar, and put the cursor in the text input.
+    2. When you start typing into the navbar's text input, the description, and only that property, of the currently selected
+    car should be bound to what you are typing in and match it exactly.
+    */
   }
 }
 //
@@ -107,7 +111,7 @@ function typeDescription(e){ // called by focusCard()
 /* Transfer Type to Page =========== */
 /* ================================= */
 function fillText(){ // called by keyup listener in input field
-  tgtFocus.innerHTML = document.getElementById("modText").value; // transfers input field changes to html
+  tgtFocus.closest('div').getElementsByTagName('p')[0].innerHTML = document.getElementById("modText").value; // transfers input field changes to html
 }
 //
 /* ================================= */
