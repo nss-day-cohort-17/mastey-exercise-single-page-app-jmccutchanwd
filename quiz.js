@@ -18,8 +18,10 @@ document.querySelector("body").addEventListener("click", function(e) {
 /* ================================= */
 /* Global Vars ===================== */
 /* ================================= */
-var inventory = []; // container for inner html
-var tgtFocus; // container for .card data
+var inventory = []; // holds inner html
+var tgtFocus; // holds .card data
+var tgtParent; // holds .card name
+var oldFocus; // holds card with #focusStyle
 //
 /* ================================= */
 /* Load JSON ======================= */
@@ -73,21 +75,43 @@ function activateEvents(e){ // called by populatePage()
 /* ================================= */
 function focusCard(e){ // called by clicking on card via listener above
   tgtFocus = e.target; // focuses on DOM near div.card
-  document.getElementById("submitButton").blur(); // takes focus off of button
-  if (document.getElementById('focusStyle')) {
-          var oldFocus = document.getElementById('focusStyle');
-          oldFocus.id = "";// deselects previous selected
+  tgtParent = e.target.parentNode;
+  if(oldFocus === undefined){
+    console.log("EMPTY")
+    focusStyles(tgtParent, "lightsteelblue");
   }
+  console.log("FULL", oldFocus)
+  removeFocus();
+}
+//
+/* ================================== */
+/* Remove Old Focus When Card Clicked */
+/* ================================== */
+function removeFocus(){
+  document.getElementById("submitButton").blur(); // takes focus off of button
+  oldFocus.id = "";
+  oldFocus.style.backgroundColor = "";
+  oldFocus.style.border = "";
+  focusStyles(tgtParent, "lightsteelblue");
+}
+//
+/* ================================= */
+/* Styles When Card Clicked ======== */
+/* ================================= */
+function focusStyles(x, color){
   if ((tgtFocus.className === "vis year") ||
       (tgtFocus.className === "vis card-title") ||
       (tgtFocus.className === "vis model") ||
       (tgtFocus.className === "vis price") ||
       (tgtFocus.className === "card-img-top img-fluid img-xs-center vis") ||
       (tgtFocus.className === "vis card-text")){ // id attribute of .card
-      tgtFocus.parentNode.id = "focusStyle"; // applies special styling focus to .card
-      console.log("TESTING after click", tgtFocus.closest('div').getElementsByTagName('p'));
-    typeDescription(); // calls input text function
-  }
+      x.id = "focusStyle"; // applies special styling focus to .card
+      var colorChange = document.querySelector("#focusStyle"); // container for #focusStyle properties
+      colorChange.style.backgroundColor = color;
+      colorChange.style.border = '3px outset rgba(0, 0, 0,0.5)';
+      oldFocus = tgtParent;
+      }
+  typeDescription();
 }
 //
 /* ================================= */
@@ -98,12 +122,6 @@ function typeDescription(e){ // called by focusCard()
     document.getElementById("submitButton").addEventListener("click", buttonSubmit); // button listener
     document.getElementById('modText').focus(); // puts focus on text input
     document.getElementById("modText").value = tgtFocus.closest('div').getElementsByTagName('p')[0].innerHTML; // transfers description to input field
-    console.log("TESTING", tgtFocus);
-    /*
-    1. Also, on click of the car element, clear the value of the text input in the navbar, and put the cursor in the text input.
-    2. When you start typing into the navbar's text input, the description, and only that property, of the currently selected
-    car should be bound to what you are typing in and match it exactly.
-    */
   }
 }
 //
@@ -123,6 +141,9 @@ function buttonSubmit(){ // called by button listener in typeDescription()
   document.getElementById("modText").blur(); // blurs input field
   document.getElementById("modText").value = ""; // clears input field
   document.getElementById("submitButton").blur(); // takes focus off of button
+  oldFocus.id = "";
+  oldFocus.style.backgroundColor = "";
+  oldFocus.style.border = "";
 }
 //
 // END
