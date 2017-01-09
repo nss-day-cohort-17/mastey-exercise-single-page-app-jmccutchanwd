@@ -1,0 +1,53 @@
+/*--------- John McCutchan ------------*/
+/* Built with Bootstrap, mobile first */
+/*============ Structure ===============*/
+.card-block{ /* The area in the card where the words are */
+  min-height: 450px;
+}
+#cardsGoHere{ /* The <div> JavaScript writes to */
+  margin-top:100px;
+}
+.card-img-top{ /* The car image  */
+  display: block;
+  height:179px;
+  width:auto;
+  margin: 0 auto;
+}
+#focusStyle{ /* The style for the <p> when clicked */
+  padding:5px;
+}
+form-control{
+  width:100%;
+}
+.spacer{
+  margin-top:170px;
+}
+/*============ Skin ===============*/
+body{
+  background-color: rgba(127, 140, 141,1.0);
+}
+.card{ /* The container for the car listing */
+  background-color: rgba(55, 58, 60,1.0);
+  border: 5px solid rgba(0, 0, 0,1.0);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.card-block{ /* The area in the card where the words are */
+  background-color: rgba(255, 255, 255,1.0);
+}
+#focusStyle{ /* The style for the <p> when clicked */
+  /*background-color: rgba(241, 196, 15,1.0);*/
+  /*border:3px outset rgba(0, 0, 0,0.5);*/
+}
+.form-control:focus{ /* The style for the input field when focused */
+  border:3px solid #5cb85c;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+/*============ Breakpoints ===============*/
+@media (min-width: 576px){
+  #modText{
+    width:100%;
+  }
+}
+/* ---- END ----- */
